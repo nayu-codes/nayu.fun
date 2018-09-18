@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nayu Bot for Discord">
+  <title>Nayu Bot - Created by Nayu</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <style>
+  html{
+    height: 100%;
+    background-color: rgb(56, 44, 56);
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+  }
+  body{
+    margin: 0;
+  }
+  @media screen and (min-width: 1400px){
+    .main{
+      width: 70%;
+      text-align: center;
+    }
+    .main h1{
+      color: white;
+      font-size: 69px;
+      padding-top: 25%;
+      font-weight: lighter;
+    }
+  }
+  @media screen and (max-width: 1399px){
+    .overlay{
+      position:absolute;
+      z-index: -1;
+      width: 100%;
+      height:100%;
+      background: rgba(0,0,0,0.30);
+    }
+    .main{
+      width:100%;
+      text-align: center;
+    }
+    .main h1{
+      color: white;
+      font-size: 10vw;
+      font-weight: lighter;
+    }
+    .main > .buttons > a{
+      font-size: 5vw;
+    }
+  }
+
+  .main > .buttons > a{
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 1% 2%;
+    height: auto;
+    text-decoration: none;
+    color: rgb(230,230,255);
+    border-radius: 3px;
+    transition-duration: 0.3s;
+  }
+  .main > .buttons > a:hover{
+    background: rgba(255,255,255,0.3);
+  }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="main">
+    <div class="header">
+      <h1>Nayu Bot</h1>
+    </div>
+    <div class="buttons">
+      <a href="https://discordapp.com/oauth2/authorize?client_id=484685695949209600&permissions=378944&scope=bot">Invite to Discord</a>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+var randno = Math.floor((Math.random() * 2) + 1);
+$('html').css("background-image", "url(nayu" + randno + ".png");
+if (randno == 2){
+  $('html').css("background-position", "right 15% bottom");
+  if ($(window).width() < 1400) {
+    newpadtop = (0.6*($(window).height()));
+    $('.main').css("padding", newpadtop + "px 0 0 0");
+  }
+}
+if (randno == 1){
+  $('html').css("background-position", "right bottom");
+    if ($(window).width() < 1400) {
+    $('.main').css("padding-top", "10%");
+  }
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125131681-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125131681-1');
+</script>
+</html>
