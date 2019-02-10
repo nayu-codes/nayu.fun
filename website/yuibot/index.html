@@ -15,16 +15,29 @@
   }
   body{
     margin: 0;
+    height: 100%;
+    overflow-y: hidden;
   }
   .main{
-    width: 70%;
+    width: 60%;
+    height: 100%;
     text-align: center;
   }
+  h1{
+    color: white;
+  }
   @media screen and (min-width: 1400px){
-    .main h1{
-      color: white;
+    h1{
       font-size: 69px;
-      padding-top: 25%;
+      font-weight: lighter;
+    }
+    .main h1{
+      font-size: 69px;
+      padding-top: 15%;
+      font-weight: lighter;
+    }
+    h2{
+      color: #eee;
       font-weight: lighter;
     }
   }
@@ -36,27 +49,88 @@
       height:100%;
       background: rgba(0,0,0,0.30);
     }
+    h1{
+      font-size:10vw;
+      font-weight:lighter;
+    }
+    h2{
+      color: #eee;
+      font-weight: lighter;
+    }
     .main h1{
-      color: white;
       font-size: 10vw;
       font-weight: lighter;
     }
-    .main > .buttons > a{
+    #breaker{
+      margin-top: 80%;
+    }
+    .buttons > a{
       font-size: 5vw;
+      display: block;
+      width: 80%;
+      margin:3% auto;
+    }
+
+    #commands table .heading th:first-child{
+      width: 40%;
     }
   }
 
-  .main > .buttons > a{
+  .buttons > a{
     border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.1);
     padding: 1% 2%;
     height: auto;
     text-decoration: none;
     color: rgb(230,230,255);
     border-radius: 3px;
     transition-duration: 0.3s;
+    line-height: 50px;
   }
-  .main > .buttons > a:hover{
+  .buttons > a:hover{
     background: rgba(255,255,255,0.3);
+  }
+  #donate{
+    background: rgba(255,50,50,0.5);
+  }
+  #donate:hover{
+    background: rgba(255,105,180, 0.3)
+  }
+  #commands{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin:auto;
+    overflow-y: scroll;
+  }
+  #commands h1{
+    color:white
+  }
+  #commands table{
+    margin:auto;
+    width: 80%;
+    text-align: center;
+  }
+  #commands table .heading th{
+    color: white;
+    border: 1px solid grey;
+    padding: 5px;
+  }
+  #commands table tr:not(.heading) th{
+    color: #eee;
+    font-weight: lighter;
+    border: 1px solid grey;
+    padding: 5px;
+  }
+  #commands .buttons{
+    margin-top: 50px;
+    padding-bottom: 50px;
+  }
+  code{
+    background: rgba(0,0,0,0.30);
+    border-radius: 5px;
+    padding: 3px;
+    line-height: 30px;
   }
   </style>
 </head>
@@ -65,9 +139,50 @@
   <div class="main">
     <div class="header">
       <h1>Yui Bot</h1>
+      <h2>A simple bot made for SAO:Integral Factor discord.</br>Made available to all other servers too.</h2>
+    </div>
+    <div id="breaker" class="buttons">
+      <a href="https://discordapp.com/oauth2/authorize?client_id=462602881032519690&permissions=383046&scope=bot">Invite to Discord</a>
+      <a href="#commands">Basic Commands</a>
+      <a href="https://discord.gg/HyMN4uk">Yui's Support Discord</a>
     </div>
     <div class="buttons">
-      <a href="https://discordapp.com/oauth2/authorize?client_id=462602881032519690&permissions=378944&scope=bot">Invite to Discord</a>
+      <a id="donate" href="https://paypal.me/yxypc" target="_blank">Donate to support development</a>
+    </div>
+  </div>
+  <div id="commands">
+    <h1>Commands</h1>
+    <div class="table">
+      <table>
+        <tr class="heading">
+          <th>Commands</th>
+          <th>Explanations</th>
+        </tr>
+        <tr>
+          <th><code>if!search</code><br/><code>if!search &ltcharacter&gt &ltskill record name&gt</code><br/></th>
+          <th>Searches the game database for the particular skill record, if specified. If skill record name is not specified, will print list of skill records of that character. <br/> Example: <code>if!search &ltasuna&gt &ltwise&gt</code> <br/> <code>if!search &ltasuna&gt</code></th>
+        </tr>
+        <tr>
+          <th><code>if!shop &ltaction&gt</code><br/>Available actions: <code>balance</code> / <code>packages</code> / <code>&ltbuy&gt &ltpackage name&gt</code></th>
+            <th><code>balance</code> will show available Arcana Gems for the user. <br/> <code>packages</code> lists the available Arcana Gem packages for purchases. <br/> <code>buy</code> will 'buy' the package specified by user. No real money is used.</th>
+        </tr>
+        <tr>
+          <th><code>if!gacha &ltchoice&gt &ltmodifier&gt</code> <br /> Available choices: <code>single</code> / <code>multi</code>/ <code>stats</code>/ <code>banners</code><br /> Available modifiers: <code>banner(optional)</code> / <code>user(must be full username)</code></th>
+          <th>Simulation of the SAOIF gacha system. <code>single</code> will pull 1 skill record, and <code>multi</code> will pull 11 skill records, similar to how the game works. 250 Arcana Gems will be deducted for single pulls, and 2500 for multi pulls.</th>
+        </tr>
+        <tr>
+          <th><code>if!&ltaction&gt &ltuser:mention&gt</code><br/>Available actions: <code>hug</code> / <code>slap</code> / <code>smug</code> / <code>kiss</code> / <code>pat</code> / <code>poke</code></th>
+          <th>Will do the action and ping the user that is mentioned. Note: The user selected <b>must</b> be a mention, or this command will not work.</th>
+        </tr>
+        <tr>
+          <th><code>if![border|grenzpolizei|polizei|police] &ltaction&gt</code><br/>Available actions: <code>ban</code> / <code>ignorechannel</code> / <code>ignoremember</code> / <code>kick</code> / <code>setup</code> / <code>warn</code></th>
+          <th><code>ban</code> Grab your hammer and swing it 'round. <br/><code>ignorechannel</code> Ignore a channel, this is a toggle<br/><code>ignoremember</code> Ignore a member, this is a toggle<br/><code>kick</code> Put on your boots and get it dirty.<br/>
+  <code>setup</code> Setup your server for Grenzpolizei<br/><code>warn</code> Give out a warning</th>
+        </tr>
+      </table>
+    </div>
+    <div class="buttons">
+      <a href="#">Back to top</a>
     </div>
   </div>
 </body>
